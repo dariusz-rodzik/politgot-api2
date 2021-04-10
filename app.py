@@ -3,10 +3,14 @@ from flask import Flask, jsonify, request
 from psycopg2 import Error, connect
 from datetime import datetime
 from flasgger import Swagger
+from flask_cors import CORS, cross_origin
 
 import psycopg2
 
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
+
 app.config['SWAGGER'] = {
     'title': 'Politgot API',
     'uiversion': 2,
@@ -85,6 +89,7 @@ def requires_auth(f):
 
 
 @app.route('/tweets', methods=['GET'])
+@cross_origin()
 def get_politic_tweets():
     """Endpoint returning a list of tweets by given politic name
         ---
@@ -180,6 +185,7 @@ def get_politic_tweets():
 
 
 @app.route('/polit', methods=['GET'])
+@cross_origin()
 def get_politicians():
     """Endpoint returning a list of politicians in database
         ---
@@ -210,6 +216,7 @@ def get_politicians():
 
 
 @app.route('/polit_twitter_acc', methods=['GET'])
+@cross_origin()
 def get_politicians_twitter_accounts():
     """Endpoint returning a list of politiancs Twitter accounts in database
         ---
@@ -244,6 +251,7 @@ def get_politicians_twitter_accounts():
 
 
 @app.errorhandler(404)
+@cross_origin()
 def page_not_found():
     return "<h1>404</h1><p>The resource could not be found.</p>", 404
 
