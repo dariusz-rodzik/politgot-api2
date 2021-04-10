@@ -52,11 +52,11 @@ swagger = Swagger(app, template=template, config=DEFAULT_CONFIG)
 def get_connection_database():
     connection = None
     try:
-         connection = psycopg2.connect(user="dotwafmh",
-                                  password="js2qCK2xSW63yncihPhLjELkjrOcv0WG",
-                                  host="rogue.db.elephantsql.com",
+         connection = psycopg2.connect(user="oildobygwichka",
+                                  password="57fadc5843aeaf6939ca4fb199317023cb3e874ba31108ee4190e396cff4e084",
+                                  host="ec2-54-74-14-109.eu-west-1.compute.amazonaws.com",
                                   port="5432",
-                                  database="dotwafmh")
+                                  database="dca42ttfdrla63")
 
     except (Exception, Error) as error:
         return {'error': error}
